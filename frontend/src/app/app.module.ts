@@ -7,11 +7,13 @@ import { AppComponent } from './app.component';
 import { CargosComponent } from './cargos/cargos.component';
 import { CargosService } from './cargos/cargos.service';
 import { FormsModule } from '@angular/forms';
+import { PerfilComponent } from './perfil/perfil.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CargosComponent
+    CargosComponent,
+    PerfilComponent
   ],
   imports: [
     BrowserModule,

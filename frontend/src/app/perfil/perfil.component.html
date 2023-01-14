@@ -7,18 +7,18 @@
         <th>Ações</th>
     </thead>
     <tbody>
-        <tr *ngFor="let cargo of cargos">
-            <td>{{cargo.id}}</td>
-            <td>{{cargo.nome}}</td>
-            <td><button class="btn btn-primary" data-target="#exampleModal" (click)="abrirModalEdicao(cargo)">Editar</button>
-                <button class="btn btn-danger" (click)="onDeleteClick(cargo)">Deletar</button></td>
+        <tr *ngFor="let perfil of perfis">
+            <td>{{perfil.id}}</td>
+            <td>{{perfil.nome}}</td>
+            <td><button class="btn btn-primary" (click)="abrirModalEdicao(perfil)">Editar</button>
+                <button class="btn btn-danger" (click)="onDeleteClick(perfil)">Deletar</button></td>
         </tr>
     </tbody>
 </table>
 
 <div>
     <label>Nome:</label>
-    <input type="text" name="nome" [(ngModel)]="cargo.nome"/>
+    <input type="text" name="nome" [(ngModel)]="perfil.nome"/>
     <div class="row">
         <button class="btn btn-success" (click)="onSaveClick()">Enviar</button>
     </div>
@@ -29,16 +29,16 @@
   
 
   <!-- Modal -->
-  <div class="modal fade" id="cargoModal" role="dialog"  tabindex="-1" aria-labelledby="cargoModal" aria-hidden="true" >
+<div class="modal fade" id="perfilModal" role="dialog"  tabindex="-1" aria-labelledby="perfilModal" aria-hidden="true" >
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="cargoModalLabel">Editar cargo</h5>
+                <h5 class="modal-title" id="perfilModalLabel">Editar cargo</h5>
             </div>
             <div class="modal-body">
                             
                 <label>Nome:</label>
-                <input type="text" name="nome" [(ngModel)]="cargoEdicao.nome"/>
+                <input type="text" name="nome" [(ngModel)]="perfilEdicao.nome"/>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="fecharModalEdicao()">Fechar</button>

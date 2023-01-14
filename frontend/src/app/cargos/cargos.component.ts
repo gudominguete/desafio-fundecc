@@ -27,7 +27,7 @@ export class CargosComponent implements OnInit {
   ngOnInit(): void {
     this.buscarCargos();  
     this.editModal = new window.bootstrap.Modal(
-      document.getElementById('exampleModal')
+      document.getElementById('cargoModal')
     );
   }
 
