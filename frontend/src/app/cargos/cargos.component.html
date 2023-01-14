@@ -1,0 +1,49 @@
+
+
+<table>
+    <thead>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Ações</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let cargo of cargos">
+            <td>{{cargo.id}}</td>
+            <td>{{cargo.nome}}</td>
+            <td><button class="btn btn-primary" data-target="#exampleModal" (click)="abrirModalEdicao(cargo)">Editar</button>
+                <button class="btn btn-danger" (click)="onDeleteClick(cargo)">Deletar</button></td>
+        </tr>
+    </tbody>
+</table>
+
+<div>
+    <label>Nome:</label>
+    <input type="text" name="nome" [(ngModel)]="cargo.nome"/>
+    <div class="row">
+        <button class="btn btn-success" (click)="onSaveClick()">Enviar</button>
+    </div>
+</div>
+
+
+
+  
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" role="dialog"  tabindex="-1" aria-labelledby="exampleModal" aria-hidden="true" >
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Editar cargo</h5>
+            </div>
+            <div class="modal-body">
+                            
+                <label>Nome:</label>
+                <input type="text" name="nome" [(ngModel)]="cargoEdicao.nome"/>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="fecharModalEdicao()">Fechar</button>
+                <button type="button" class="btn btn-primary" (click)="onUpdateClick()">Editar</button>
+            </div>
+        </div>
+    </div>
+</div>
