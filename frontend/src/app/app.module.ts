@@ -8,18 +8,22 @@ import { CargosComponent } from './cargos/cargos.component';
 import { CargosService } from './cargos/cargos.service';
 import { FormsModule } from '@angular/forms';
 import { PerfilComponent } from './perfil/perfil.component';
+import { UsuarioComponent } from './usuario/usuario.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
     CargosComponent,
-    PerfilComponent
+    PerfilComponent,
+    UsuarioComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   exports: [],
   providers: [CargosService],

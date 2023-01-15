@@ -1,0 +1,80 @@
+<table>
+    <thead>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>CPF</th>
+        <th>Sexo</th>
+        <th>Data Nascimento</th>
+        <th>Cargo</th>
+        <th>Perfis</th>
+        <th>Ações</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let usuario of usuarios">
+            <td>{{usuario.id}}</td>
+            <td>{{usuario.nome}}</td>
+            <td>{{usuario.cpf}}</td>
+            <td>{{usuario.sexo}}</td>
+            <td>{{usuario.dataNascimento}}</td>
+            <td>{{(usuario.cargo)?(usuario.cargo.nome):""}}</td>
+            <td><ul><li *ngFor="let perfil of usuario.perfis">{{perfil.nome}}</li></ul></td>
+            <td><button class="btn btn-danger" (click)="onDeleteClick(usuario)" >Deletar</button></td>
+        </tr>
+    </tbody>
+</table>
+
+<button type="button" class="btn btn-success" (click)="abrirModalCadastro()">Cadastrar usuário</button>
+
+
+  <!-- Modal -->
+<div class="modal fade" id="cadastroUsuarioModal" role="dialog"  tabindex="-1" aria-labelledby="cadastroUsuarioModal" aria-hidden="true" >
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="cadastroUsuarioModalLabel">Cadastrar usuario</h5>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <label>Nome:</label>
+                    <input type="text" name="nome" [(ngModel)]="usuario.nome"/>
+                </div>    
+                
+                <div class="row">         
+                    <label>CPF:</label>
+                    <input type="text" name="cpf" [(ngModel)]="usuario.cpf"/>
+                </div>
+                <div class="row">
+                    <label for="sexo">Sexo</label>
+                    <select [(ngModel)]="usuario.sexo">
+                        <option value="M">M</option>
+                        <option value="F">F</option>
+                    </select>
+                </div>
+                <div class="row">
+                    
+                    <label>Data nascimento:</label>
+                    <input type="date" name="dataNascimento" [(ngModel)]="usuario.dataNascimento"/>
+                </div>
+                <div class="row">
+                    <label> Cargo:</label>
+                    <select (ngModelChange)="setCargo($event)" [(ngModel)]="usuario.cargo">
+                        <option *ngFor="let cargo of cargos" [ngValue]="cargo">{{cargo.nome}}</option>
+                    </select>
+                </div>
+                <div class="row">
+                    <label> Perfil:</label>
+                    <div *ngFor="let perfil of perfis">
+                        <label>
+                          <input type="checkbox" [value]="perfil.id" (change)="onCheckboxChange($event)" />
+                          {{perfil.nome}}
+                        </label>
+                      </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="fecharModalCadastro()">Fechar</button>
+                <button type="button" class="btn btn-primary" (click)="salvarUsuario()">Salvar</button>
+            </div>
+        </div>
+    </div>
+</div>
